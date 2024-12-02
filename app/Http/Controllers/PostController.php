@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController
@@ -11,7 +12,8 @@ class PostController
      */
     public function index()
     {
-        //
+        $posts = Post::find(1);
+        return $posts->tags;
     }
 
     /**
@@ -19,7 +21,19 @@ class PostController
      */
     public function create()
     {
-        //
+    //    $post = Post::create([
+    //     'title' => 'News Title Five',
+    //     'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, voluptatem?'
+    //    ]);
+        $post = Post::find(1);
+
+       //Attach an existing Tag
+       $post->tags()->attach([5,7]);
+
+       //Create a new Tag
+    //    $post->tags()->create([
+    //         'tag_name' => "Yahoo Baba",
+    //    ]);
     }
 
     /**

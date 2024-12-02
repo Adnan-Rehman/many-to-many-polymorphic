@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class VideoController
@@ -11,7 +12,8 @@ class VideoController
      */
     public function index()
     {
-        //
+        $videos = Video::find(1);
+        return $videos->tags;
     }
 
     /**
@@ -19,7 +21,16 @@ class VideoController
      */
     public function create()
     {
-        //
+        $video = Video::find(1);
+        $video->tags()->attach([2,6]);
+
+        // $video = Video::create([
+        //     'title' => 'Video Title Four',
+        //     'url' => 'video/fourth.mp4',
+        // ]);
+
+        // $video->tags()->attach(4);
+
     }
 
     /**
